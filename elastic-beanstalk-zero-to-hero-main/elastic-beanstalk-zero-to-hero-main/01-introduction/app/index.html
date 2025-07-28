@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Elastic Beanstalk</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Welcome to AWS Elastic Beanstalk!</h1>
+            <p class="subtitle">Your first successful deployment</p>
+        </header>
+
+        <main>
+            <section class="intro">
+                <h2>Congratulations!</h2>
+                <p>You've successfully deployed your first application to AWS Elastic Beanstalk. This simple web application demonstrates the ease of deployment using EB.</p>
+            </section>
+
+            <section class="features">
+                <h2>What Elastic Beanstalk Provides:</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🔧 Easy Deployment</h3>
+                        <p>Simply upload your code and EB handles the rest</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📈 Auto Scaling</h3>
+                        <p>Automatically scales your application based on demand</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔍 Monitoring</h3>
+                        <p>Built-in health monitoring and logging</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚡ Load Balancing</h3>
+                        <p>Distributes traffic across multiple instances</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info">
+                <h2>Environment Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Platform:</strong> <span id="platform">Node.js</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Region:</strong> <span id="region">Loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Deployment Time:</strong> <span id="timestamp">Loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Status:</strong> <span class="status-healthy">Healthy</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="actions">
+                <h2>Try These Actions:</h2>
+                <button onclick="showAlert()" class="btn btn-primary">Test JavaScript</button>
+                <button onclick="changeTheme()" class="btn btn-secondary">Toggle Theme</button>
+                <button onclick="showInfo()" class="btn btn-info">Show More Info</button>
+            </section>
+
+            <section class="next-steps">
+                <h2>Next Steps</h2>
+                <ul>
+                    <li>Explore the Elastic Beanstalk console</li>
+                    <li>Check application logs</li>
+                    <li>Try updating this application</li>
+                    <li>Move to Module 2 for advanced features</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 AWS Elastic Beanstalk Learning Lab | Module 1: Introduction</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

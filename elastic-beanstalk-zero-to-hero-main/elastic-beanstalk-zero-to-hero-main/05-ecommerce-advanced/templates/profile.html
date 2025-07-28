@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - TechStore{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-user me-2"></i>User Profile</h3>
+                </div>
+                <div class="card-body p-5">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="profile-avatar mb-3">
+                                <i class="fas fa-user-circle fa-6x text-primary"></i>
+                            </div>
+                            <h4>{{ user.name }}</h4>
+                            <p class="text-muted">{{ user.email }}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Full Name</label>
+                                    <p class="form-control-plaintext">{{ user.name }}</p>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Email Address</label>
+                                    <p class="form-control-plaintext">{{ user.email }}</p>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Member Since</label>
+                                    <p class="form-control-plaintext">{{ user.created_at.split('T')[0] }}</p>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Account Status</label>
+                                    <p class="form-control-plaintext">
+                                        <span class="badge bg-success">Active</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Account Statistics</h5>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="text-center p-3 bg-light rounded">
+                                        <h4 class="text-primary mb-1">0</h4>
+                                        <small class="text-muted">Orders</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-center p-3 bg-light rounded">
+                                        <h4 class="text-primary mb-1">0</h4>
+                                        <small class="text-muted">Wishlist</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Quick Actions</h5>
+                            <div class="d-grid gap-2">
+                                <a href="{{ url_for('home') }}" class="btn btn-outline-primary">
+                                    <i class="fas fa-shopping-bag me-2"></i>Continue Shopping
+                                </a>
+                                <button class="btn btn-outline-secondary" onclick="showUserList()">
+                                    <i class="fas fa-users me-2"></i>View All Users
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User List Modal -->
+<div class="modal fade" id="userListModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registered Users</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="userListContent">
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

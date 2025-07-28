@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}TechStore - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Welcome to TechStore</h1>
+                <p class="lead mb-4">Discover the latest technology products at unbeatable prices. From smartphones to laptops, we have everything you need to stay connected and productive.</p>
+                {% if not session.user_email %}
+                    <div class="d-flex gap-3">
+                        <a href="{{ url_for('register') }}" class="btn btn-light btn-lg">Get Started</a>
+                        <a href="#products" class="btn btn-outline-light btn-lg">Browse Products</a>
+                    </div>
+                {% else %}
+                    <a href="#products" class="btn btn-light btn-lg">Browse Products</a>
+                {% endif %}
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Tech Products" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Featured Products</h2>
+            <p class="lead text-muted">Explore our collection of premium technology products</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 product-card shadow-sm">
+                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">{{ product.description }}</p>
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="h5 text-primary mb-0">${{ "%.2f"|format(product.price) }}</span>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100" onclick="addToCart({{ product.id }})">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-shipping-fast fa-3x text-primary"></i>
+                </div>
+                <h4>Fast Shipping</h4>
+                <p class="text-muted">Free shipping on orders over $50. Get your products delivered within 2-3 business days.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                </div>
+                <h4>Secure Payment</h4>
+                <p class="text-muted">Your payment information is protected with bank-level security encryption.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-undo fa-3x text-primary"></i>
+                </div>
+                <h4>Easy Returns</h4>
+                <p class="text-muted">30-day return policy. If you're not satisfied, we'll make it right.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold mb-4">About TechStore</h2>
+                <p class="lead mb-4">We're passionate about technology and committed to providing our customers with the best products and service.</p>
+                <p class="mb-4">Our mission is to make cutting-edge technology accessible to everyone. We carefully curate our product selection to ensure quality and value for our customers.</p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Quality Products</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Expert Support</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Best Prices</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop" alt="About Us" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="bg-primary text-white py-5">
+    <div class="container text-center">
+        <h3 class="mb-3">Stay Updated</h3>
+        <p class="mb-4">Subscribe to our newsletter for the latest product updates and exclusive offers.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Enter your email" id="newsletter-email">
+                    <button class="btn btn-light" type="button" onclick="subscribeNewsletter()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
